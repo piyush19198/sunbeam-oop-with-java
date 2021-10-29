@@ -1,0 +1,476 @@
+Day 1
+1. Refer to "Installation Instructions" from day1-data\day1_help & complete.
+
+2. MUST go through "readme_day1"  from day1-data\day1_help\readmes & day1-data\day1_help\slides\PPTDay1.pdf
+
+3. Go through simple code samples from day1-data\code\src
+
+4. Solve 
+4.1 Accept 2 double values from User (using Scanner). Check data type.
+. If arguments are not doubles , supply suitable error message & terminate.
+If numbers are double values , print its average.
+eg : 
+Scanner sc=new Scanner(....);
+sop("Enter 2 double nos");// 123 abc
+if(sc.hasNextDouble())
+{
+//=> 1st no is of the type double
+   double d1=sc.nextDouble();
+   if(....)
+   {
+   } else 
+     sop("1st no is invalid");
+} else
+ sop("1st no invalid");
+
+
+
+4.2 Display food menu to user. User will select items from menu along with the quantity. (eg 1. Dosa 2. Samosa 3. Idli ... 10 . Generate Bill ) Assign fixed prices to food items(hard code the prices)
+When user enters 'Generate Bill' option(10) , display total bill & exit.
+eg : boolean exit=false;
+double totalBill=0.0;
+
+while(!exit)
+{
+   sop("options....");
+   sop("choose");
+   switch(sc.nextInt())
+  {
+    case 1: sop("Enter qty");
+    totalBill += (60*sc.nextInt());
+    break;
+   .....
+    case 10 : sop("total bill"+....);
+    exit=true;
+    break;
+  }
+}
+
+Day 2
+1. Complete pending work.
+
+2. Revise class work using today's code samples , sequence document & readmes
+
+3.Solve Tank assignment along with memory picture.
+
+What will be the output ?
+
+class Tank {
+  private int level;
+  Tank(int level)
+   {
+     this.level=level;
+   }
+  public void setLevel(int level1)
+  {
+    level=level1;
+  }
+  public int getLevel()
+  {
+    return level;
+  }
+}	
+
+public class Assignment {
+  public static void main(String[] args) {
+    Tank t1 = new Tank(10);
+    Tank t2 = new Tank(20);
+     s.o.p("1: t1.level: " + t1.getLevel() +
+          ", t2.level: " + t2.getLevel());//10 20
+    t1 = t2;
+    s.o.p("2: t1.level: " + t1.getLevel() +
+          ", t2.level: " + t2.getLevel());//20 20
+    t1.setLevel(27);
+     s.o.p("3: t1.level: " + t1.getLevel() +
+          ", t2.level: " + t2.getLevel());//27 27
+    t2.setLevel(t1.getLevel()+10);
+     s.o.p("4: t1.level: " + t1.getLevel() +
+          ", t2.level: " + t2.getLevel());//37 37
+  }
+}
+
+4. Solve this (Will be discussed in detail in the lab session)
+
+Modify box class , to supply following functionality & test it using a separate class TestBoxFunctionality.java
+
+4.1 Create Cube
+TestBoxFunctionality.java
+User will supply side of the cube. Create a cube from it.
+Hint : Add overloaded constructor in Box class : single argument 
+
+4.2. Add a method to Box class to compare equality of 2 boxes & test it.
+Hint : 2 boxes are equal if & only if , their dimensions are exactly the same.
+eg : box1 : 10 20 30
+box2 : 20 10 30
+What should be method declaration in Box class ?
+boolean isEqual(Box anotherBox)
+{
+ ......
+}
+From Tester class 
+box1 , box2
+How to invoke the method ?
+box1.isEqual(box2)
+
+
+4.3 Add a method to Box class to return a new Box with modified offset in dimensions & test it with the tester.
+eg : Suppose client has ordered 1st Box : 10 20 30
+Clnt orders another new box : with ref to 1st box : 3 -4 -2
+App should create another NEW BOX :13 16 28
+eg : Box box1=new Box(sc.nextDouble(),sc.nextDouble(),sc.nextDouble());
+sop("Enter the offsets w.r.t 1st box: width offset d offset h offset");
+Box box2=box1.createNewBox(....);
+
+
+4.4 Display color of the box , having larger volume.
+Hint : add color as state + add getter
+
+Day 3
+1. Revise class work by referring to day3 code samples.
+(So now there should not be any pending work!)
+
+2. Solve this (without using IDE)
+2.1 Create a class Point2D , in package - "com.app.geometry"   : for representing a point in x-y co-ordinate system.
+
+2.2 Create a parameterized constructor to init x & y co-ords.
+
+2.3 Add a method to return string form of  point's x & y co-ords
+Hint :  public String getDetails()) 
+
+2.4 Add isEqual method to Point2D class :a boolean returning method : must return true if n only if both points are having same x,y co-ords or false otherwise.
+
+2.5 Add calculateDistance method to calculate distance between current point and specified point & return the distance to the caller.
+Hint : Use distance formula . Use java.lang.Math class methods --sqrt, pow etc.
+
+2.6 Write TestPoint class , in package "tester" , with a main method
+Accept co ordinates of 2 points from user (Scanner) --to create 2 points (p1 & p2)
+
+2.7 Use getDetails method to display point details.(p1's details & p2's details)
+
+2.8 Invoke isEqual & display if points are same or different (i.e p1 & p2 are located at the same position)
+
+2.9 If they are not located at the same position , display distance between p1 & p2
+
+3. Discuss ready code : 
+param_passing
+
+Day 4
+1. Revise class work
+How ?
+Refer to  sequence document n whiteboard : from today's help.
+1.1 import day4.1 n revise parameter passing n access specifiers
+1.2 import day4.2 to revise : array of primitive types , array of refs n static keyword.
+(for static : refer to it's readme)
+
+2. Solve
+2.1 Create a new eclipse project day4_assignments
+2.2 Copy earlier Point2D class , along with the package.
+2.3 Create a class "TestPointArray1.java" in "tester" package for the following
+2.4 Accept , how many no of points to plot from user.
+2.5 Create suitable data structure
+Hint : Point2D[] points=new Point2D[sc.nextInt()];
+2.6 Prompt user for x & y co ordinates n store the data suitably 
+Hint : for loop
+2.7 Supply Menu to user
+Options
+1. Display details of a specific point
+User i/p : index
+O/p : x & y co-ordinates should be displayed. or error message(eg : Invalid index , pls retry!!!!)
+
+2. Display x, y co-ordinates of all points
+Hint : for-each
+
+3. User i/p : 2 indices for the points , validate the indices
+Display distance between specified points (iff they are not located at the same position)
+eg : sop("Enter index of strt point n end point");
+validation : boundary condition (0<=index<length-1)
+isEqual -- false --compute distance --display it.
+4. Exit
+
+
+Day 5
+1. Complete pending assignments
+
+2. Import day5.1 in your workspace
+2.1 Revise test_static
+2.2 Revise inheritance hierarchy , toString , up casting n run time polymorphism
+(This revision will be done around 4:05PM onwards in the common lab session)
+
+3. Solve  assignment to apply inheritance n polymorphism
+
+3.1 Can you arrange Fruit,Apple,Orange,Mango in inheritance hierarchy ?
+Use tight encapsulation.
+
+3.2 Properties (instance variables)  : color : String , weight : double , name:String, isFresh : boolean
+
+3.3 Add suitable constructors.
+
+3.4 Override  toString correctly to return state of all fruits (including : name ,color , weight )
+
+3.5 Add a taste() method : public String taste()
+
+For Fruit : it should return "no specific taste"
+Apple : should return  "sweet n sour"
+Mango : should return  "sweet"
+Orange : should return  "sour"
+
+3.6 Add all of above classes under the package "com.app.fruits"
+3.7 Create java application FruitBasket , with main method , as a tester
+3.8 Prompt user for the basket size n create suitable data structure
+3.9 Supply options
+1. Add Mango
+case 1 : boundary checking
+basket[counter++]=new Mango(nm,weight,color);
+break;
+2. Add Orange
+3. Add Apple
+NOTE : You will be adding a fresh fruit in the basket , in all of above options.
+4. Display names of all fruits in the basket.
+eg :  for-each --- null checking --getName()
+5. Display name,color,weight , taste of all fresh fruits , in the basket.
+eg : for-each , null checking --toString , taste, isFresh : getter
+6. Display tastes of all stale(not fresh) fruits in the basket.
+7. Mark a fruit as stale
+i/p : index 
+eg : setter : isFresh : false
+o/p : error message (in case of invalid index) or mark it stale
+8. Mark all sour fruits stale (optional)
+eg : for-each , taste --equals(String) 
+10. Exit 
+
+
+Day 6
+1. Complete pending work (Highest priority)
+
+2. Revise class work 
+2.1 import day6.1 , to revise method overloading to achieve compile time polymorphism.
+2.2 import day6.2 , to revise inheritance , run time polymorphism , upcasting , downcasting , instanceof keyword.
+(Will be revised in common lab session : 4:05PM onwards)
+2.3 Solve remiaing method overloading demo
+2.4 Solve covariance demo 
+2.5 Draw memory diagram , of the following java statement
+Student s1=new Student("a1", "b1",2020, "PG-DAC", 123456,80);
+
+2.6 Draw memory diagram , of the following java statement
+Person p=new Student("a1", "b1",2020, "PG-DAC", 123456,80);
+
+	
+
+3. Solve : It's a continuation of Day 5 assignment
+3.1 Copy day5_assignment project into day6.1_assignment
+
+3.2 Add specific functionality , in the sub classes
+In Mango : public void pulp() {Display name n color of the fruit : creating  pulp!}
+In Orange : public void juice() {Display name n weight of the fruit : extracting juice!}
+In Apple : public void jam() {Display name of the fruit : making jam!}
+
+3.3 Add a new option 8 in Tester
+Option 8 : Display taste n fruit specific functionality , for all the fruits in the basket
+
+4. Completely Optional assignment
+Create Emp based organization structure with :  Emp , Mgr , Worker
+All of above classes must be in package--com.app.org
+
+4.1 Emp state--- id(int), name, deptId(string) , basic(double)
+Emp id should NOT be accepted from user. It should be auto generated , in auto increment manner
+Hint : add static data member : idGenerator
+Inc it n assign it to emp id : in emp class ctor.
+
+Get emp details -- using overriding form of toString
+
+4.2 Mgr state  ---id,name,basic,deptId , performanceBonus
+
+Behaviour ----1. get mgr details : via toString
+2. compute net salary (formula: basic+perfmonceBonus) 
+3. get performance bonus. 
+
+4.3 Worker state  --id,name,basic,deptId,hoursWorked,hourlyRate
+Behaviour--- 
+1. get worker details -- via toString
+2.  compute net salary (formula:  = basic+(hoursWorked*hourlyRate) 
+3. get hrlyRate of the worker  -- add a new method to return hourly rate of a worker.(getter)
+
+Can you organize these classes in inheritance  hierarchy?
+
+4.4 Write TestOrganization in "tester" package.
+Create suitable array to store organization details.
+
+Provide following options. Run the application till "exit"
+
+1. Hire Manager
+
+2. Hire Worker  
+
+3. Display information of all employees , including net salary using single for-each loop.
+Display from the same for-each loop, performance bonus if it's a manager or if it's a worker , display hourly rate of the worker .
+
+4. Update basic salary
+i/p : emp id &  increment in basic component of salary
+o/p : In case of invalid emp id , give suitable error message. Otherwise , increment the salary.
+
+5.  Exit
+
+Day7 
+No New assignments!
+If you want , 
+1. Can add abstraction in Fruits scenarion
+Hint : taste() : abstract method in Fruit class
+
+2. Can complete emp based optional assignment along with abstraction.
+Hint : computeNetSalary() : in Emp class
+
+OR
+Simply complete pending earlier work , revise n refresh!!!!
+
+Day 8
+1. Complete pending assignments
+
+2. Revise class work
+2.1 Import day8.1 , to revise interfaces.
+2.2 Import day8.2 , to revise excpetion handling.
+
+3. Create Java application for fixed stack & growable stack based on Stack i/f , for storing emp details
+
+Steps
+1.1  Create Employee class -- id,name,salary, constructor,toString
+1.2 Stack interface -- push & pop functionality for Emp refs. & declare STACK_SIZE as a constant. 
+1.3 Create implementation class of Stack i/f -- FixedStack (array based)
+1.4 Create another implementation class of Stack i/f-- GrowableStack (array based)
+1.5
+
+Create Tester class (Hint :  use dynamic method dispatch using interfaces)
+Display Menu
+Note : Must use 1 switch-case only. You won't need any complex nested control structure
+Once user selects either fixed or growable stack , user shouldn't be allowed to change the selection of the stack.
+(Hint : null checking)
+
+1 -- Choose Fixed Stack
+2 -- Choose Growable Stack
+Accept following options only after initial selection.(Hint : null checking)
+3 -- Push data 
+I/P : Accept emp details & store these details in the earlier chosen stack or give error mesg : NO stack chosen !!!
+4 --- Pop data & display the same (from the earlier chosen stack or give error mesg : NO stack chosen !!!)
+No inputs are required : pop emp details from the top of the stack
+5 -- Exit
+
+Day 9
+1. Complete pending work
+
+2. Revise class work
+2.1 import day9.1 to revise custom exceptions n exception handling
+2.2 import day9.2 to revise strings n stringbuilder n date time handling
+
+3. Discuss Vehicle assignment (COMPLETELY OPTIONAL)
+Solve Vehicle equality assignment
+Problem :
+Create a class Vehicle , under the package : com.app.vehicles , to represent any vehicle. 
+Supply tight encapsulation
+state(data members)  : chasisNo : int , color : String , price : double
+chasisNo  MUST be unique (non duplicate) for any vehicle (primary Key : unique ID)
+Get  complete state : toString
+Hint : override equals method inherited from Object class : to replace ref equality by content equality(based upon unique ID : PK)
+
+Create a class TestVehicle under the package "tester"
+Accept details of 2 vehicles from user . 
+Display "SAME" or "DIFFERENT" , in case of same or different chasis nos.
+Hint : invoke equals
+
+7. Objective : Use exception handling , string handling & Date in vehicle showroom based scenario
+Vehicle's  state(attributes) --chasisNo : String , color : String ,category:string, price : double , manufactureDate(Date)
+Add validation rules for the inputs : 
+chasisNo id unique
+category  : Petrol , Diesel, EV , Hybrid , CNG
+manufactureDate : in this financial year (1st Apr 2021 to 31Mar 2022) 
+
+Create a tester as Showroom.
+Options
+1. Add Vehicle 
+Apply all validation rules . In case of success , add the vehicle in the showroom
+Otherwise raise custom exception , alert user using exc handling.
+
+2. Display All Vehicles
+
+3. Exit
+
+
+Day 10 
+1. Complete pending work.
+
+2. Revise class work.
+2.1 import day10.1 to understand working of "equals" completely.
+Make changes
+Modify chasisNo based unique id to : chasisNo & color.(equivalent to composite PK)
+Meaning : Treat 2 vehicles same iff chasisNo n color is same.
+Test it , using all test cases.
+
+2.2 It will be better to directly import day10.3 .
+Revise Date Time parsing , formatting, validation rules n enum
+Make changes
+Modify type of color from String to Enum
+Make necessary changes n test.
+
+2.3 Instead of giving this error message : "No Enum constant" , can you supply a better message?
+Invalid Category Chosen!!!!
+Valid Categories are : petrol , diesel ...
+
+Similary do it for Color.
+
+2.4 Optional :
+Can you integrate this composite PK in day10.3 ?
+
+Link for Java Application De compiler : http://www.javadecompilers.com/jad
+
+Day 11
+
+1. import day11.1 , to revise additional features of enum n it's usage
+2. import day11.2 , to understand aggregation between Vehicle & DeliveryAddress
+3. import day11.3 
+3.1 Refer to Vehicle & it's inner class DeliveryAddress.
+Understand composition. 
+Refer to "Showroom.java" , option to purchase a vehicle
+3.2 Refer to the package "nested_classes" , to revise all rules regarding inner classes
+3.3 Refer to "wrappers" package n solve code sample , along with it's readme
+3.4 Refer to "non_generic" package , to identify dis advantages of non generic code.
+Optional 
+3.5 Draw memory diagram of composition between Vehicle & DeliveryAddress
+3.6 Draw memory diagram of non generic class , tester code
+
+4. If time permits , we will discuss fresh assignment later.
+
+Create Java application for customer management system.
+
+4.1 Customer : name(string),email(string),password(string),registrationAmount(double),dob(Date),plan(enum : SILVER ,GOLD,DIAMOND,PLATUNUM)
+Unique id : customer email
+Create a composition between Customer & AdharCard
+Adhar Card details : card number, location.
+Only after  successful customer registration , adhar card details can be linked to the customer.
+
+4.2 Create custom exception class to represent errors
+CustomerHandlingException
+
+4.3 Create in "utils" package : ValidationRules
+Rules 
+email must contain "@" & should be from ".com" domain
+password must be min 4 max 10 chars long
+reg amount should be multiples of 500
+dob should be before 1st Jan 1995
+no duplicate registrations.
+
+4.4 Create a simple tester to test customer registration n linking to Adhar Card.
+
+Day 12
+1. import day12.1 to understand why generics ?
+2. import day12.2 to understand basic ArrayList API with Integer List
+3. import day12.3 to apply collections to a business scenario(showroom of vehicles)
+
+4. Complete Day11 assignment (customer management sysytem)
+5. Supply these options
+5.1 Register new customer
+5.2 Customer login
+5.3 Change password
+5.4 Un subscribe customer
+i/p email
+5.5 Display all customer names , who have taken a specific plan
+5.6 Display all customer details , born after specific date
+5.7 Display all customer details , with specified adhar card location.
+
