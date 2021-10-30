@@ -20,6 +20,7 @@ public class IntegerList2 {
 			list.add(i);	
 		}
 		
+		System.out.println("List before insert"+list);
 		list.add(0,999);
 		System.out.println("List after insert"+list);
 		
@@ -35,9 +36,9 @@ public class IntegerList2 {
 		System.out.println(list.contains(10));
 		System.out.println(list.indexOf(10)+" "+list.lastIndexOf(10));
 		
-		//System.out.println(list);
+		System.out.println(list);
 		System.out.println(list.remove(0));
-		//System.out.println(list);
+		System.out.println(list);
 		System.out.println(list.indexOf(10));
 		
 	}
