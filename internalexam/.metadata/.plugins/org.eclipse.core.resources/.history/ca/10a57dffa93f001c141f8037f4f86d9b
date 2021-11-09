@@ -1,0 +1,35 @@
+package utils;
+
+import java.util.ArrayList;
+import custom_exceptions.*;
+import com.app.Ebank.Account;
+
+public interface Operations {
+
+	public void addAccount(ArrayList<Account> accounts,long accNumber,String name,String email,String phone,double balance)
+			throws InvalidAccountException, InsufficientBalanceException; 
+	
+	public void displayAccount(ArrayList<Account> accounts);
+	
+	public void displayParticularDetails(long AccountNO,ArrayList<Account> accounts) 
+			throws AccountNotFoundException;
+
+	public void displayAccountByEmail(String Email, ArrayList<Account> accounts)
+			throws InvalidAccountException, AccountNotFoundException;
+
+	public void removeAccount(long AccountNO, ArrayList<Account> accounts)
+			throws InvalidAccountException, AccountNotFoundException;
+
+	public void withdrawAmount(long accountNo, double amount, ArrayList<Account> accounts)
+			throws AccountNotFoundException, InsufficientBalanceException;
+
+	public void depositAmount(long accountNo, double amount, ArrayList<Account> account)
+			throws AccountNotFoundException, InsufficientBalanceException;
+
+	void amountTransfer(long account1, long account2, double amount, ArrayList<Account> account)
+			throws AccountNotFoundException, InsufficientBalanceException, InvalidAccountException;
+
+	void searchByName(String name, ArrayList<Account> accounts)
+			throws InvalidAccountException, AccountNotFoundException;
+	
+}

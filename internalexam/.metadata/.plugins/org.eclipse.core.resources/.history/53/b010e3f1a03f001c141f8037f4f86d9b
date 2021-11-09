@@ -1,0 +1,70 @@
+package application;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import utils.AccountUtils;
+import utils.ValidateAccount.*;
+
+import com.app.Ebank.Account;
+
+public class Ebank {
+	
+	public static void main(String[] args) {
+		
+		try(Scanner sc = new Scanner(System.in)) {
+			
+			ArrayList<Account> accounts = new ArrayList<>();
+			AccountUtils accUtils = new AccountUtils();
+			
+			boolean exit = false;
+			
+			while(!exit) {
+				
+				System.out.println("\nSelect Operation to Perform");
+				System.out.println("\n1. Add Account \n2. Display an Account \n3. Display All Accounts \n4. Remove an Account by email \n5. Withdraw"
+						+ "\n6. Deposit \n7. Transfer \n8. Search account using NAME \n9. Search account using EMAIL \n10. Search Account using PHONE"
+						+ "\n11. EXIT");
+				
+				try {
+					switch(sc.nextInt()) {
+						case 1:
+							System.out.println("Enter Account Details in following order\n"
+									+ "AccountNumber, Name(WithoutSpaces), Email, Phone, Balance");
+							accUtils.addAccount(accounts, sc.nextLong(), sc.next(), sc.next(), sc.next(), sc.nextDouble());
+							System.out.println("Account has been created successfully.");
+							break;
+						
+						case 2:
+							System.out.println("Enter Account Number to show information");
+							accUtils.displayParticularDetails(sc.nextLong(), accounts);
+							break;
+						
+						case 3:
+							System.out.println("All Account Details are: ");
+							accUtils.displayAccount(accounts);
+							break;
+						
+						case 4:
+							System.out.println("Enter Email to check Account: ");
+							accUtils.displayAccountByEmail(sc.next(), accounts);
+							System.out.println("Enter Account number to Remove account: ");
+							accUtils.removeAccount(sc.nextLong(), accounts);
+							break;
+							
+						default:
+							System.out.println("!!!SELECT VALID OPERATION!!!");
+							break;
+					}
+				} catch(Exception e) {
+					System.out.println("---ERROR OCCURED : "+e.getMessage()+"---");
+					e.printStackTrace();
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+}

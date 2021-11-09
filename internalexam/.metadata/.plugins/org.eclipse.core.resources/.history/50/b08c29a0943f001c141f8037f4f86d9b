@@ -1,0 +1,12 @@
+package utils;
+
+import java.util.ArrayList;
+import custom_exceptions.*;
+import com.app.Ebank.Account;
+
+public interface Operations {
+
+	public void addAccount(ArrayList<Account> accounts,long accNumber,String name,String email,String phone,double balance)
+			throws InvalidAccountExceptions, InsufficientBalanceExceptions; 
+	
+}

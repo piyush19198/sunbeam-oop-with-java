@@ -1,0 +1,11 @@
+package utils;
+
+import com.app.crickter.Crickter;
+
+public class CrickterUtils {
+
+	public static Crickter addCrickter(String name, int age, String email_id, String phone, int rating) {
+		
+	}
+	
+}

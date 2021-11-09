@@ -1,0 +1,7 @@
+package tester;
+
+import java.util.Comparator;
+
+public class sortByRating implements Comparator<? super T> {
+
+}

@@ -1,0 +1,14 @@
+package com.app.crickter;
+
+public class Crickter {
+	
+	//private data members to achieve tight encapsulation
+	private String name;
+	private int age;
+	private String email_id;
+	private String phone;
+	private int rating;
+	
+	
+	
+}

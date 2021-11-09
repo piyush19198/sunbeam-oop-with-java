@@ -1,0 +1,21 @@
+package utils;
+
+import java.util.ArrayList;
+
+import com.app.crickter.Crickter;
+
+public class CrickterUtils {
+
+	public static Crickter addCrickter(String name, int age, String email_id, String phone, int rating) {	
+		return new Crickter(name, age, email_id, phone, rating);
+	}
+	
+	public static Crickter searchByEmail(String email_id,ArrayList<Crickter> crickters) {
+		Crickter c = new Crickter(email_id);
+		int index = crickters.indexOf(c);
+		if(index==-1) {
+			System.out.println("!!!NO SUCH CRICKTER EXISTS IN RECORD!!!");
+		}
+		return crickters.get(index);
+	}
+}

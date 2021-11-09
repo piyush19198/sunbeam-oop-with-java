@@ -1,0 +1,7 @@
+package custom_exceptions;
+
+public class InvalidAccountException {
+	public void InvalidAccountExceptions(String msg) {
+		super(msg);
+	}
+}

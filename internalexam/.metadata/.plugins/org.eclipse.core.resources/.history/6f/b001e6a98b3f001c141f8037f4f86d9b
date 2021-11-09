@@ -1,0 +1,20 @@
+package com.app.Ebank;
+
+public class Account {
+	
+	private long accNumber;
+	private String name;
+	private String email;
+	private String phone;
+	private double balance;
+	
+	public Account(long accNumber, String name, String email, String phone, double balance) {
+		super();
+		this.accNumber = accNumber;
+		this.name = name;
+		this.email = email;
+		this.phone = phone;
+		this.balance = balance;
+	}
+	
+}

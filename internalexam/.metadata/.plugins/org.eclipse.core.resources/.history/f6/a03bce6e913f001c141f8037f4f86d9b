@@ -1,0 +1,48 @@
+package utils;
+
+import java.util.ArrayList;
+
+import com.app.Ebank.Account;
+
+import custom_exceptions.InvalidAccountException;
+
+public class ValidateAccount {
+	
+	public static void validateDuplicateAccount(long accountNo, ArrayList<Account> accounts)
+			throws InvalidAccountException {
+		
+		Account a = new Account(accountNo);
+		
+		if (accounts.contains(a)) {
+			throw new InvalidAccountException("!!!DUPLICATE ACCOUNT FOUND!!!");
+		
+		}
+	}
+	
+	public static String checkAccountName(String name) throws InvalidAccountException {
+		if (name.length() > 5)
+			return name;
+		else
+			throw new InvalidAccountException("!!!USER NAME IS TOO SHORT!!!");
+	}
+	
+	public static String validateEmail(String email) throws InvalidAccountException {
+		if (email.contains("@") && email.endsWith(".com")) {
+			return email;
+		} else
+			throw new InvalidAccountException("!!!INVALID EMAIL ID!!!");
+	}
+	
+	public static String validatePhone(String phone) throws InvalidAccountException, NumberFormatException {
+		if (phone.length() == 10) {
+			try {
+				Long.parseLong(phone);
+			} catch (Exception e) {
+				throw new InvalidAccountException("!!!NON NUMERIC VALUE INPUT DETECTED!!!");
+			}
+			return phone;
+		} else
+			throw new InvalidAccountException("!!!INVALID PHONE NUMBER!!!");
+	}
+	
+}

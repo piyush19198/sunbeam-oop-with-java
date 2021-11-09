@@ -1,0 +1,84 @@
+package utils;
+
+import java.util.ArrayList;
+
+import com.app.Ebank.Account;
+import custom_exceptions.*;
+import static utils.ValidateAccount.*;
+
+public class AccountUtils implements Operations{
+	
+	@Override
+	public void addAccount(ArrayList<Account> accounts, long accNumber, String name, String email, String phone,
+			double balance) throws InvalidAccountException, InsufficientBalanceException {
+
+		Account a = validateAllDetails(accounts, accNumber, name, email, phone, balance);
+		accounts.add(a);
+	}
+	
+	@Override
+	public void displayAccount(ArrayList<Account> accounts) {
+		for (Account a : accounts) {
+			System.out.println(a);
+		}
+	}
+
+	@Override
+	public void displayParticularDetails(long AccountNO, ArrayList<Account> accounts) throws AccountNotFoundException {
+		Account a = displayParticularAccount(AccountNO, accounts);
+		System.out.println(a);
+	}
+	
+	@Override
+	public void displayAccountByEmail(String Email, ArrayList<Account> accounts)
+			throws InvalidAccountException, AccountNotFoundException {
+		int ptr = 0;
+		for (Account a : accounts) {
+			if (a.getEmail().equals(validateEmail(Email))) {
+				ptr++;
+				System.out.println(a);
+			}
+		}
+		if (ptr == 0) {
+			throw new AccountNotFoundException("!!!NO ACCOUNT WITH THIS EMAIL ID IS REGISTERED!!!");
+		}
+	}
+	
+	@Override
+	public void removeAccount(long AccountNO, ArrayList<Account> accounts)
+			throws InvalidAccountException, AccountNotFoundException {
+		Account a = removeParticularAccount(AccountNO, accounts);
+		accounts.remove(a);
+	}
+	
+	@Override
+	public void withdrawAmount(long accountNo, double amount, ArrayList<Account> accounts)
+			throws AccountNotFoundException, InsufficientBalanceException {
+
+		Account a = displayParticularAccount(accountNo, accounts);
+		if (a.getBalance() > amount) {
+			a.setBalance(a.getBalance() - amount);
+			
+			if (a.getBalance() < 100) {
+				a.setBalance(a.getBalance() + amount);
+				throw new InsufficientBalanceException("!!!CAN NOT WITHDRAW. MINIMUM BALANCE REACHED!!!");
+			}
+			
+			System.out.println("!!!AMOUNT WITHDRAWN SUCCESSFULLY!!!");
+			System.out.println("Updated Balance= " + a.getBalance());
+			
+		} else
+			throw new InsufficientBalanceException("CAN NOT WITHDRAW DUE TO INSUFFICIENT FUNDS");
+	}
+	
+	@Override
+	public void depositAmount(long accountNo, double amount, ArrayList<Account> account)
+			throws AccountNotFoundExceptions, InsufficientBalanceExceptions {
+
+		Account a = displayParticularAccount(accountNo, account);
+		a.setBalance(a.getBalance() + amount);
+		System.out.println("Successfully Amount Credited...!");
+		System.out.println("Updated Balance= " + a.getBalance());
+	}
+	
+}

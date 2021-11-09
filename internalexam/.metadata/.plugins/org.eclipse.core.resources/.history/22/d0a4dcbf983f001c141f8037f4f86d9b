@@ -1,0 +1,8 @@
+package custom_exceptions;
+
+public class AccountNotFoundException extends Exception {
+	public AccountNotFoundExceptions(String msg)
+	{
+		super(msg);
+	}
+}

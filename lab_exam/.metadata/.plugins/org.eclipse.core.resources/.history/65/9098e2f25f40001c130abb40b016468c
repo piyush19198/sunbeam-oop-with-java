@@ -1,0 +1,66 @@
+package tester;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import com.app.crickter.Crickter;
+import static utils.CrickterUtils.*;
+
+public class CrickterTest {
+
+	public static void main(String[] args) {
+		try(Scanner sc = new Scanner(System.in)) {
+			
+			ArrayList<Crickter> crickters = new ArrayList<Crickter>();
+			boolean exit = false;
+			
+			while(!exit) {
+				System.out.println("\n Select operation from menu mentioned below.\n");
+				System.out.println("1.Add Crickter.\n"
+						+ "2.Modify Crickter's rating\n"
+						+ "3.Search Crickter by name\n"
+						+ "4.Display all Cricketers added in collection.\n"
+						+ "5.Display All Crickters in sorted form by rating.");
+				try {
+					switch (sc.nextInt()) {
+					
+					case 1:
+						System.out.println("Enter details of Crickter in following order: "
+								+ "\n Name -- Age -- EmailID -- Phone -- Rating: ");
+						Crickter c = addCrickter(sc.next(), sc.nextInt(), sc.next(), sc.next(), sc.nextInt());
+						crickters.add(c);
+						System.out.println("---Crickter added successfully---");
+						break;
+					
+					case 2:
+						System.out.println("Enter Email Id of crickter to change rating: ");
+						c=searchByEmail(sc.next(), crickters);
+						c.setRating(sc.nextInt());
+						System.out.println(c);
+						break;
+						
+					case 3: 
+						System.out.println("Enter name of crickter: ");
+						String nameSearch = sc.next();
+						for(Crickter cSearchByName : crickters) {
+							if(cSearchByName.getName().equals(nameSearch))
+								System.out.println(cSearchByName);
+						}
+						break;
+						
+					case 4:
+						
+						break;
+						
+					default:
+						System.out.println("!!!PLEASE ENTER VALID OPERATION!!!");
+						break;
+					}
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
+}

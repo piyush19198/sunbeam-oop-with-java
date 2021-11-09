@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="com.app.Ebank.Account"/>
+    <fullyQualifiedTypeName name="custom_exceptions.InvalidAccountException"/>
+    <fullyQualifiedTypeName name="custom_exceptions.InsufficientBalanceException"/>
+    <fullyQualifiedTypeName name="utils.ValidateAccount"/>
+    <fullyQualifiedTypeName name="utils.AccountUtils"/>
+    <fullyQualifiedTypeName name="custom_exceptions.AccountNotFoundException"/>
+</qualifiedTypeNameHistroy>

@@ -1,0 +1,19 @@
+package utils;
+
+import com.app.Ebank.Account;
+
+import custom_exceptions.InvalidAccountException;
+
+public class ValidateAccount {
+	
+	public static void validateDuplicateAccountNumber(long accountNo, ArrayList<Account> accounts)
+			throws InvalidAccountException {
+		
+		Account a = new Account(accountNo);
+		if (accounts.contains(a)) {
+			throw new InvalidAccountException("!!!DUPLICATE ACCOUNT FOUND!!!");
+		
+		}
+	}
+	
+}
